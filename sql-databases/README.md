@@ -214,7 +214,7 @@ SELECT DATEDIFF(end_date, start_date);
 ------------------------------------------------------------------------
 
 # Cheat Sheet
-
+```
   Function        Purpose
   --------------- ---------------------
   DATE_ADD()      Add interval
@@ -231,3 +231,4 @@ SELECT DATEDIFF(end_date, start_date);
   DATE()          Extract date
   TIME()          Extract time
   DATE_FORMAT()   Format dates
+```
