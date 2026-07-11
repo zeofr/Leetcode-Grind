@@ -30,6 +30,7 @@ SELECT
 ) AS SecondHighestSalary;
 ```
 
+
 ---
 
 _Official problem description unavailable._
