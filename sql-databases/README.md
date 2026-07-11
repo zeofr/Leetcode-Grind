@@ -9,7 +9,8 @@
 5. [JOINs](#5-joins)
 6. [NULL Handling](#6-null-handling)
 7. [String Functions](#7-string-functions)
-8. [Date Functions](#8-date-functions)
+8. [Pattern Matching (LIKE & REGEXP)](#8-pattern-matching-like--regexp)
+9. [Date Functions](#9-date-functions)
 9. [CASE WHEN](#9-case-when)
 10. [Subqueries](#10-subqueries)
 11. [Common Table Expressions (CTEs)](#11-cte)
@@ -295,7 +296,91 @@ LOCATE('a',name)
 
 ------------------------------------------------------------------------
 
-# 8. Date Functions
+
+# 8. Pattern Matching (LIKE & REGEXP)
+
+## LIKE
+
+`LIKE` performs simple wildcard matching.
+
+### Wildcards
+
+| Wildcard | Meaning |
+|----------|---------|
+| `%` | Zero or more characters |
+| `_` | Exactly one character |
+
+Examples:
+
+```sql
+WHERE name LIKE 'A%';
+WHERE email LIKE '%@gmail.com';
+WHERE word LIKE '___';
+WHERE title LIKE '%SQL%';
+```
+
+## REGEXP
+
+`REGEXP` (or `RLIKE`) supports full regular expressions.
+
+```sql
+WHERE name REGEXP '^A';
+```
+
+### Common Regex Symbols
+
+| Symbol | Meaning |
+|--------|---------|
+| `^` | Start of string |
+| `$` | End of string |
+| `.` | Any single character |
+| `[]` | Character class |
+| `[^]` | Negated character class |
+| `*` | Zero or more |
+| `+` | One or more |
+| `?` | Zero or one |
+| `{n}` | Exactly n |
+| `{n,}` | At least n |
+| `{n,m}` | Between n and m |
+| `|` | OR |
+| `()` | Grouping |
+| `\` | Escape special character |
+
+### POSIX Character Classes
+
+| Pattern | Meaning |
+|---------|---------|
+| `[[:digit:]]` | Digits |
+| `[[:alpha:]]` | Letters |
+| `[[:alnum:]]` | Letters or digits |
+| `[[:lower:]]` | Lowercase |
+| `[[:upper:]]` | Uppercase |
+| `[[:space:]]` | Whitespace |
+
+### Common Interview Patterns
+
+```sql
+REGEXP '^[0-9]+$'        -- only digits
+REGEXP '^[A-Za-z]+$'     -- only letters
+REGEXP '^[0-9]{10}$'     -- exactly 10 digits
+REGEXP '^A.*e$'          -- starts with A, ends with e
+REGEXP 'cat|dog'         -- cat OR dog
+```
+
+## LIKE vs REGEXP
+
+| Task | LIKE | REGEXP |
+|------|------|---------|
+| Starts with A | `LIKE 'A%'` | `REGEXP '^A'` |
+| Ends with e | `LIKE '%e'` | `REGEXP 'e$'` |
+| Contains SQL | `LIKE '%SQL%'` | `REGEXP 'SQL'` |
+| Only digits | ❌ | `REGEXP '^[0-9]+$'` |
+| Only letters | ❌ | `REGEXP '^[A-Za-z]+$'` |
+
+> Use **LIKE** for simple wildcard searches and **REGEXP** for validation or complex text matching.
+
+
+# 9. Date Functions
 
 ## DATE_ADD()
 
@@ -779,3 +864,5 @@ Grouping: WHERE before GROUP BY HAVING after GROUP BY
 
 Execution: FROM -\> WHERE -\> GROUP BY -\> HAVING -\> SELECT -\> ORDER
 BY -\> LIMIT
+
+------------------------------------------------------------------------
