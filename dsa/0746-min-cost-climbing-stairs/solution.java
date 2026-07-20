@@ -12,6 +12,4 @@ class Solution {
         
         int n = cost.length;
 
-        if(n < 3) return 0;
-
 }
