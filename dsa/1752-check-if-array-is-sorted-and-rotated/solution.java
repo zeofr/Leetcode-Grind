@@ -10,7 +10,6 @@ class Solution {
         for(int j = i+1 ; j< n-1 ; j++){
             if(nums[j]>nums[j+1]) return false;
         }
-
         if (nums[n - 1] > nums[0]) {
             return false;
         }
