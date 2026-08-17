@@ -1,3 +1,3 @@
-# 0054. Spiral Matrix
+# 0054. 
 
 _Official problem description unavailable._
