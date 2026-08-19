@@ -4,7 +4,6 @@ class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
         int top = 0 , left = 0 , bottom = m-1, right = n-1;
-
         while(top <= bottom && left <= right){
             for(int i = left; i<=right; i++)
                 result.add(matrix[top][i]);
