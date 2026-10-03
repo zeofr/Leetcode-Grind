@@ -1,32 +1,29 @@
 # 0198. House Robber
 
-## 💡 My Approach
-### Doubt
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
 
-The main confusion in this problem comes from the initialization:
-
-```java
-dp[1] = Math.max(nums[0], nums[1]);
-```
-
-Why do we set `dp[1]` to the maximum of `nums[0]` and `nums[1]` instead of just assigning `nums[1]`?
-
-My reasoning is:
-
-- When calculating `dp[2]`, we compare:
-  ```java
-  pick = nums[2] + dp[0];
-  notPick = dp[1];
-  ```
-- If `nums[1]` is greater than `nums[0] + nums[2]`, then `notPick` (`dp[1]`) will naturally be chosen.
-- If `nums[0]` is greater than `nums[1]`, then:
-  ```java
-  dp[1] = dp[0]
-  ```
-  since `dp[1]` stores the maximum money that can be robbed from the first two houses.
-- In that case, `pick = nums[2] + dp[0]` is still valid because `dp[0]` only includes house `0`, so robbing house `2` does not violate the "no adjacent houses" rule.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
 
 
----
 
-_Official problem description unavailable._
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+Example 2:
+
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+
+
+
+Constraints:
+
+1 <= nums.length <= 100
+
+0 <= nums[i] <= 400
